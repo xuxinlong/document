@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ecui使用规范</title>
+</head>
+
+<body data-ecui="load:esr" id="main">
+    <p>etpl文档链接：<a href="http://ecomfe.github.io/etpl/">http://ecomfe.github.io/etpl/</a> </p>
+    <p>后端接口文档及工作相关文档链接：<a href="http://192.168.155.56:7000/">http://192.168.155.56:7000/</a>（内网资源）</p>
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =   
+    <pre>
+    ecui的用法规范：
+
+一。ecui项目目录结构：
+
+    _ _ _ root (根目录)
+        |
+        |_ _ _ _ auction (项目目录)
+                |
+                |_ _ _ _ 
+                        |_ _ _ _  model (模块)
+                        |       |
+                        |       |_ _ _ _  model.js (加载路由代码： ecui.esr.loadRoute('routeName');)
+                        |       |
+                        |       |_ _ _ _  route.routeName.html
+                        |       |
+                        |       |_ _ _ _  route.routeName.js
+                        |       |
+                        |       |_ _ _ _  route.routeName.css
+                        |
+                        |_ _ _ _  images (图片)
+                        |       |
+                        |       |_ _ _ _  btn_pre.png
+                        |       |
+                        |       |_ _ _ _  btn_next.png
+                        |
+                        |_ _ _ _  index.html
+                        |
+                        |_ _ _ _  index.js
+                        |
+                        |_ _ _ _  index.css
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+二。ecui模块中的css文件中引用图片的规范
+        在css中引用图片的路径不是以当前css路径为基路径而是以index.html的路径为基路径处理的（ps：与正常的项目目录结构引用图片不一样，因为框架加载css策略处理的逻辑不一样）
+    例如：在route.model.css中要引用 btn_pre.png  
+        ecui中错误的引用方式：
+        .pre {
+            background-image: url(../images/btn_pre.png);
+        }
+            ps：此css正常的使用 link 元素加载的话，是可以正确加载到 localhost/auction/images/btn_pre.png 图片的，但是，在ecui中改css文件是通过ajax请求加载的，
+                把加载的css内容以 style 元素的方式 append 到 index.html 页面的dom中，这个时候浏览器回去加载 style 元素中引用的图片文件，所以url(../images/btn_pre.png)
+                加载的是 localhost/images/btn_pre.png 文件，访问不到 root/images/btn_pre.png 文件，所以请使用下面的正确的用法
+        ecui中正确的引用方式：
+        .pre {
+            background-image: url(images/btn_pre.png);
+        }
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+三。ecui样式问题
+
+    关于控件的css样式的设置，在控件的dom结构上添加css样式，切忌直接在控件结构上添加css样式，PS：因为在控件中，控件的dom结构是固定的，控件的结构是不固定的，有可能会更改的，所以样式放在控件结构上不稳定的；
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+四。ecui中的路由（route）跳转、刷新
+    （1）ecui.esr.redirect(loc)
+        重定向路由（会改变url地址），loc的值是一个字符串，例如："order.working.schedule"、"order.working.schedule~id=1~text=2"，最终的url地址为localhost/index.html#order.working.schedule
+    （2）ecui.esr.change(name, options)
+        刷新路由（会改变url地址，用于刷新子路由），name（route的name）的值是字符串，例如："order.working.schedule"；options（路由的参数）的值是JSON对象，例如："order.working.schedule"、"{'id': 1, 'text': 2}"，
+        最终的url为localhost/index.html#order.working.schedule~id=1~text=2
+        在多次change之后，url后面带参数，这个时候需要删除某个参数的时候就可以通过设置参数为 null 来输出某个参数，例如："{'id': 1, 'text': null}"，最终的url为localhost/index.html#order.working.schedule~id=1
+    （3）ecui.esr.callRoute(name)
+        刷新路由（不会改变url地址，也不能给路由传参数，用于刷新子路由），name（route的name）的值是字符串，例如："order.working.schedule"，最终的url为localhost/index.html#order.working.schedule
+        
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+五。ecui.esr.request请求方式（http请求格式）
+
+    代码：
+    ecui.esr.addRoute('order.list', {
+        model: ['dataName@GET /company/detail?id=${id}', 'sales@GET staff/query/on-job', 'shops@GET order/find-shops'],
+        main: 'container',
+        view: 'orderList',
+        children: 'orderListTable',
+        onbeforerequest: function () {
+            context.id = 505;
+        },
+        onbeforerender: function (context) {
+
+        },
+        events: function (context) {
+            ecui.get('order-search').onclick = function () {
+
+            };
+        },
+        onafterrender: function (context) {
+            this.events(context);
+        }
+    });
+
+    1) children子路由语法（字符串）： 在该路由加载完成后会去加载子路由orderListTable，例如：children: 'orderListTable'；也可以使用变量来处理，例如：children: '${name|orderListTable}'; 其中name是变量，
+    在onbeforerequest中设置 context.name="widthrawListTable"，那么在主路由加载完后会去加载widthrawListTable，而不会加载orderListTable 
+
+    2) model请求语法： 变量@方式 api路径?参数名=参数值
+
+    1. GET: 变量@GET api路径?参数名=参数值
+        (1) 'dataName@GET /company/detail?id=505'
+        (2) 'dataName@GET /company/detail?id=${id}' 在onbeforerequest函数中设置context.id = 505 效果同上
+
+    2. POST：变量@POST api路径?参数名=参数值
+        (1) 'dataName@POST /company/detail?id=505'
+        (2) 'dataName@POST /company/detail?id=${id}' 在onbeforerequest函数中设置context.id = 505 效果同上
+
+    3. JSON：变量@JSON api路径?参数名=参数值 (参数名支持a.b的格式)
+        （1）'dataName@JSON /company/detail?id=505&type=text'
+        （2）'dataName@JSON /company/detail?parm.id=505&parm.type=text'（参数为{parm: { id: 505, type: 'text' } }）
+        （3）'dataName@JSON /company/detail?parm.id=${id}&parm.type=text' （在onbeforerequest函数中设置context.id = 505 效果同上）
+
+    4. FORM：变量@FORM api路径?formName&参数名=参数值 (formName是提交数据的form表单的名称)
+        （1）'dataName@FORM /company/detail?form&id=505'
+        （2）'dataName@FORM /company/detail?form&id=${id}' 在onbeforerequest函数中设置context.id = 505 效果同上
+        （3）'dataName@FORM /company/detail?form1&form2&id=${id}'
+
+    5. 以上情况都是 model 为数组的时候，ecui.esr.request 的处理，当需要根据某个参数的值的不同请求不同的接口数据，那么就得用到下面的这个方法来处理，
+        （1）model可以是一个 function ，方式为：
+            ecui.esr.request(
+                model: function (context, callback) {
+                    var model = [
+                        'advertising@ v1/base/advertising',//一句话广告
+                        'assessInfoVO@POST v1/assess/${carId}',
+                        'basicInfoVO@POST v1/car/basic/${carId}',
+                        'configuration@POST v1/car/configure/${carId}',
+                        'describe@POST v1/car/describe/${carId}',
+                        'proprietaryVO@POST v1/car/owner/${carId}',
+                        'price@POST v1/car/price/${carId}',
+                        'procedures@POST v1/car/procedure/${carId}',
+                        'licenseCertificateInfo@POST v1/car/licenseCertificate/${carId}',
+                        'files@POST v1/file/query/${carId}/1',
+                        'saleInfoVO@POST v1/car/sale/${carId}'
+                    ];
+                    if (!context.carId) {
+                        model = model.slice(0, 1);
+                    }
+                    ecui.esr.request(model, callback);
+                    return false;
+                }
+            }
+        （2）此方法会等所有的接口请求数据返回后执行route路由的渲染（ecui.esr.render），如 ecui.esr.render 和model中的请求不需要同步执行的话，ecui.esr.request(model) ,不传入callback,
+        函数不返回 false 即可实现,可以用以下方式来处理：
+            ecui.esr.request(
+                model: function (context, callback) {
+                    var model = [
+                        'advertising@ v1/base/advertising',//一句话广告
+                        'assessInfoVO@POST v1/assess/${carId}',
+                        'basicInfoVO@POST v1/car/basic/${carId}',
+                        'configuration@POST v1/car/configure/${carId}',
+                        'describe@POST v1/car/describe/${carId}',
+                        'proprietaryVO@POST v1/car/owner/${carId}',
+                        'price@POST v1/car/price/${carId}',
+                        'procedures@POST v1/car/procedure/${carId}',
+                        'licenseCertificateInfo@POST v1/car/licenseCertificate/${carId}',
+                        'files@POST v1/file/query/${carId}/1',
+                        'saleInfoVO@POST v1/car/sale/${carId}'
+                    ];
+                    if (!context.carId) {
+                        model = model.slice(0, 1);
+                    }
+                    ecui.esr.request(model);
+                }
+            }
+    ps：当model为function时，该路由的onbeforerequest方法不会被执行，需要将onbeforerequest的逻辑在model function 的ecui.esr.request(model)之前处理
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+六。ext-esr（数据驱动）用法规范
+    语法： 变量(*)@((#(模板name))|全局函数)
+        ps: @符号后面跟着#，这个是模板调用的格式，#后面是一个target模板的名字，制定模板加载渲染填充当前元素，如果#后面的target 的 name为空的话，就是默认为当前元素的内容重新渲染
+            @符号后面不跟#，则后面应该跟一个全局的函数，这样的话在setData改变这个变量的时候就会被执行，执行时会把当前的context（当@前面添加*，将传入context）/data（当@前面不带*，将当前的变量的值传入函数）当做参数，传入函数中执行
+            @符号前面带有*，会将当前context传入模板，或者函数，例如：在模板中使用"${text}"时，此时读的是context.text
+            @符号前面不带*，会将当前变量的值传入模板，或者函数，例如：在模板中使用"${text}"时，此时读的是data.text（假设你是使用"data@#extEsrTarget"）
+    术语：控件元素 --- 带有 ui 属性的元素
+
+    1. 直接数据录入
+        语法：变量*@#
+        
+    HTML：
+        &lt;span ui=&quot;ext-esr:data*@#&quot;&gt;&amp;#36;{data.text}&lt;/span&gt;
+    JS：
+        ecui.esr.setData('data', {'text': 'ext-esr直接数据录入'}); //添加数据必须用ecui.esr.setDate(name,value)
+
+    ps：使用data*@#，则${data.text}读的是context.data.text的数据
+
+    ps：使用@#时，没有指定target模板，这个时候会把当前控件元素的content当做一个匿名模板当做指定模板渲染，
+        而这个地方有一个特殊的点需要注意，使用 $ 的转义字符 &amp;#36; 替换 $ ，
+        如果 $ 不适用转义字符，若改控件元素在路由的加载模板中，则compile编译的时候就会把${data.text}解析成对应的context.data.text的值，编译之后的content就不存在动态变量了，
+        所以 $ 必须使用的转义字符 &amp;#36; 替换
+
+    2. 模板调用(etpl模板语法)
+        语法：变量*@#模板targetName
+
+    HTML：
+        &lt;div ui=&quot;ext-esr:data*@#extEsrTarget&quot;&gt;&lt;/div&gt;
+
+        &lt;!-- target:extEsrTarget --&gt;
+        &lt;span&gt;模板调用(etpl模板语法)&lt;/span&gt;
+
+    PS：extEsrTarget模板中使用的所有的变量都是基于context的属性，@符号前面不加*的话则模板中使用的所有的变量都是基于data的属性
+
+    3. 直接数据录入
+        语法：变量*@()
+        ps:
+        
+    HTML：
+        &lt;div ui=&quot;ext-esr:data@()&quot;&gt;='&lt;span&gt;测试'+$.text+'&lt;/span&gt;'&lt;/div&gt;
+    JS：
+        ecui.esr.setData('data', {'text': 'ext-esr直接数据录入'}); //添加数据必须用ecui.esr.setDate(name,value)
+
+    ps：使用data*@()，则${text}读的是context.text的数据
+
+    ps：使用*@()时，会用当前控件元素的content的内容创建一个匿名函数（context 的 html 将会被当做这个匿名函数的函数体），
+        在对 data 执行 setData 方法时执行这个匿名函数，context/data会通过变量 $ 传入到这个匿名函数中，
+        当content的第一个字符为 = 时，这个匿名函数的函数体是this.setContent(content 的 html)，
+        如果第一个字符不是 = 时，这个匿名函数的函数体是 context 的 html
+        对应esr.js 代码 line:1058
+
+    4. 全局函数调用
+
+    HTML：
+        &lt;select ui=&quot;type:select;ext-esr:city@yixin.common.cityChange()&quot;&gt;&lt;/select&gt;
+    JS：
+        yixin.common.cityChange = function () {
+            console.log('调用全局函数');
+        }
+
+    PS：当执行yixin.common.cityChange()时，会将变量city当做函数传入函数中，如果@符号前面加*则会将当前的context当做参数传入函数中
+
+    PS：所有的数据驱动都是通过ecui.esr.setData方法去触发的（重新渲染）
+        例如：ecui.esr.setData('data', {'text': '更改数据'})
+
+    PS：所有的ecui.esr.request('data@POST url', function () {})完也会触发数据驱动，其实，request的处理逻辑会在请求数据返回后主动执行ecui.esr.setData('data', reponseData)，所以也会触发ext-esr的数据驱动逻辑
+    
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+    </pre>
+</body>
+</html>
+

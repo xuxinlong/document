@@ -1,0 +1,25 @@
+<!-- target:mobile -->
+<div class="container">
+	<div class="left">
+		<div class="code-item" ui="type:NS.CodeMirror;mode:htmlmixed;id:code-html">
+			<div class="code-title"><span>html:</span><span class="code-copy">复制</span></div>
+			<textarea class="code-item html-code">${code.html}</textarea>
+		</div>
+		<div class="code-item" ui="type:NS.CodeMirror;mode:text/x-less;id:code-css">
+			<div class="code-title"><span>css:</span><span class="code-copy">复制</span></div>
+			<textarea class="code-item html-css">${code.css}</textarea>
+		</div>
+	</div>
+	<div class="middle">
+		<iframe ui="type:NS.IframeContent;id:iframe" src="mobile.html" id="iframeContent"></iframe>
+	</div>
+	<div class="right">
+		<div class="code-item" ui="type:NS.CodeMirror;mode:javascript;id:code-js">
+			<div class="code-title"><span>javascript:</span><span class="code-copy">复制</span></div>
+			<textarea class="code-item html-javascript">${code.js}</textarea>
+		</div>
+
+		<div class="run-btn" ui="type:NS.RunBtn">运行</div>
+	</div>
+</div>
+

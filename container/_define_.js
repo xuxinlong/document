@@ -1,0 +1,1 @@
+ecui.esr.loadRoute('mobile');
