@@ -72,7 +72,7 @@ fi
 
 # 判断route.xxx.js是否存在，不存在则创建文件
 if [[ ! -f $1/route.$2.js ]]; then
-    touch $1/layer.$2.html
+    # touch $1/layer.$2.html
     touch $1/route.$2.html
     touch $1/route.$2.js
     touch $1/route.$2.css
@@ -95,12 +95,12 @@ if [[ ! -f $1/route.$2.js ]]; then
     cssStr=${cssStr//\{route\}/$2} 
     echo "$cssStr" >> $1/route.$2.css
 
-    layerStr=${template%%\/\*\*\*layer.html-end\*\*\*\/*}
-    layerStr=${layerStr##*/\*\*\*layer.html-begin\*\*\*/}
-    layerStr=${layerStr//\{route\}/$2} 
-    echo "$layerStr" >> $1/layer.$2.html
+    # layerStr=${template%%\/\*\*\*layer.html-end\*\*\*\/*}
+    # layerStr=${layerStr##*/\*\*\*layer.html-begin\*\*\*/}
+    # layerStr=${layerStr//\{route\}/$2} 
+    # echo "$layerStr" >> $1/layer.$2.html
 
-    echo "初始化路由文件文件$1/layer.$2.html"
+    # echo "初始化路由文件文件$1/layer.$2.html"
     echo "初始化路由文件文件$1/route.$2.html"
     echo "初始化路由文件文件$1/route.$2.js"
     echo "初始化路由文件文件$1/route.$2.css"

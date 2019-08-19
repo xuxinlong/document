@@ -23,27 +23,25 @@ window.myCodeMirrors = [];
                     }.bind(this);
                 },
                 {
-                    init: function () {
-                        util.timer(function () {
-                            var win = this._eIframe.contentWindow;
-
-                            win.yiche.util.createStyle('body { div { color: red; font-size: 14px; } #test { color: #333; } }');
-                            // var name = win.yiche.util.createTarget('<div>更换即可法国红酒-测试</div>');
-
-                            var name = win.yiche.util.createTarget('<div ui="type:m-panel"><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div></div>');
-                            win.yiche.util.changeTarget(name);
-                        }.bind(this), this._bIframeLoaded ? 0 : 1000);
-
-                    },
                     changeContent: function (html, css, js) {
-                        var win = this._eIframe.contentWindow;
-                        win.yiche.util.createStyle(css);
+                        var clearInt = window.setInterval(function () {
+                            var iframe = this._eIframe,
+                                win = iframe.contentWindow,
+                                num = this.$ID.split('-').pop();
+                            // console.log('IframeLoaded ', num);
+                            if (this._bIframeLoaded && win.yiche && win.yiche.iframeReady[this.$ID]) {
+                                window.clearInterval(clearInt);
 
-                        var name = win.yiche.util.createTarget(html);
+                                win.yiche.util.createStyle(css);
 
-                        win.yiche.util.createScript(js);
+                                var name = win.yiche.util.createTarget(html);
 
-                        win.yiche.util.changeTarget(name);
+                                win.yiche.util.createScript(js);
+
+                                win.yiche.util.changeTarget(name);
+                            }
+
+                        }.bind(this), 100);
                     }
                 }
             ),
@@ -90,10 +88,16 @@ window.myCodeMirrors = [];
                 ui.Control,
                 {
                     onclick: function () {
-                        var iframe = ecui.get('iframe');
-                        var html = ecui.get('code-html');
-                        var css = ecui.get('code-css');
-                        var js = ecui.get('code-js');
+                        this.run();
+                    },
+                    onready: function () {
+                        this.run();
+                    },
+                    run: function () {
+                        var iframe = ecui.get('iframe-' + this.$ID);
+                        var html = ecui.get('code-html-' + this.$ID);
+                        var css = ecui.get('code-css-' + this.$ID);
+                        var js = ecui.get('code-js-' + this.$ID);
                         iframe.changeContent(html.getCodeMirror().getValue(), css.getCodeMirror().getValue(), js.getCodeMirror().getValue());
                     }
                 }
@@ -113,18 +117,6 @@ window.myCodeMirrors = [];
             };
         },
         onafterrender: function (context) {
-            // var iframeContent = ecui.$('iframeContent'),
-            //     win = iframeContent.contentWindow,
-            //     doc = iframeContent.contentWindow.document;
-
-            // iframeContent.onload = function () {
-            //     win.yiche.util.createStyle('body { div { color: red; font-size: 14px; } #test { color: #333; } }');
-            //     var name = win.yiche.util.createTarget('<div>更换即可法国红酒-测试</div>');
-            //     util.timer(function () {
-            //         var name = win.yiche.util.createTarget('<div ui="type:m-panel"><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div><div style="height: 100px">飞规划局快乐一进门，UI看，更换即可</div></div>');
-            //         win.yiche.util.changeTarget(name);
-            //     }, 2000);
-            // };
         }
     });
 }());

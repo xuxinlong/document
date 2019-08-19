@@ -16,6 +16,7 @@
         }
     );
     ecui.esr.addRoute('{route}', {
+        main: 'container',
         model: [''],
         onbeforerequest: function (context) {
         },

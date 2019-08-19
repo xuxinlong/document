@@ -1,46 +1,46 @@
 <!-- target:mobile -->
-
 <!-- var:num = Date.now().toString() + Math.round(Math.random() * 10000) -->
 <div class="container pc-cont">
 	<div class="code">
 		<div class="code-item" ui="type:NS.CodeMirror;mode:htmlmixed;id:code-html-${num}">
 			<div class="code-title"><span>html:</span><span class="code-copy">复制</span></div>
-			<textarea class="code-item html-code">${code.html}</textarea>
+			<textarea class="code-item html-code">${pcCode.html}</textarea>
 		</div>
 		<div class="code-item" ui="type:NS.CodeMirror;mode:text/x-less;id:code-css-${num}">
 			<div class="code-title"><span>css:</span><span class="code-copy">复制</span></div>
-			<textarea class="code-item html-css">${code.css}</textarea>
+			<textarea class="code-item html-css">${pcCode.css}</textarea>
 		</div>
 		<div class="code-item" ui="type:NS.CodeMirror;mode:javascript;id:code-js-${num}">
 			<div class="code-title"><span>javascript:</span><span class="code-copy">复制</span></div>
-			<textarea class="code-item html-javascript">${code.js}</textarea>
+			<textarea class="code-item html-javascript">${pcCode.js}</textarea>
 		</div>
-		<div class="run-btn" ui="type:NS.RunBtn;id:${num}">运行</div>
+		<div class="operate-cont">
+			<div class="run-btn" ui="type:NS.RunBtn;id:${num}">运行</div>
+		</div>
 	</div>
 	<div class="preview">
-		<iframe ui="type:NS.IframeContent;id:iframe-${num}" src="mobile.html#/preview/page.pc-example~iframeId=${num}" id="iframeContent"></iframe>
+		<iframe ui="type:NS.IframeContent;id:iframe-${num}" src="pc.html#/preview/pc-page/pc-example~iframeId=${num}" id="iframeContent"></iframe>
 	</div>
 </div>
-
 <!-- var:num = Date.now().toString() + Math.round(Math.random() * 10000) -->
-<div class="container">
+<div class="container mobile">
 	<div class="left">
 		<div class="code-item" ui="type:NS.CodeMirror;mode:htmlmixed;id:code-html-${num}">
 			<div class="code-title"><span>html:</span><span class="code-copy">复制</span></div>
-			<textarea class="code-item html-code" placeholder="输入 html 代码……">${code.html}</textarea>
+			<textarea class="code-item html-code" placeholder="输入 html 代码……">${mCode.html}</textarea>
 		</div>
 		<div class="code-item" ui="type:NS.CodeMirror;mode:text/x-less;id:code-css-${num}">
 			<div class="code-title"><span>css:</span><span class="code-copy">复制</span></div>
-			<textarea class="code-item html-css" placeholder="输入 css/less 代码……">${code.css}</textarea>
+			<textarea class="code-item html-css" placeholder="输入 css/less 代码……">${mCode.css}</textarea>
 		</div>
 	</div>
 	<div class="middle">
-		<iframe ui="type:NS.IframeContent;id:iframe-${num}" src="mobile.html#/preview/page.m-example~iframeId=${num}" id="iframeContent"></iframe>
+		<iframe ui="type:NS.IframeContent;id:iframe-${num}" src="mobile.html#/preview/m-page/m-example~iframeId=${num}" id="iframeContent"></iframe>
 	</div>
 	<div class="right">
 		<div class="code-item" ui="type:NS.CodeMirror;mode:javascript;id:code-js-${num}">
 			<div class="code-title"><span>javascript:</span><span class="code-copy">复制</span></div>
-			<textarea class="code-item html-javascript" placeholder="输入 JavaScript 代码……"></textarea>
+			<textarea class="code-item html-javascript" placeholder="输入 JavaScript 代码……">${mCode.js}</textarea>
 		</div>
 
 		<div class="run-btn" ui="type:NS.RunBtn;id:${num}">运行</div>

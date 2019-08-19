@@ -15,14 +15,16 @@
         {
         }
     );
-    ecui.esr.addRoute('example', {
+    ecui.esr.addRoute('pc-example', {
+        main: 'container',
         model: [''],
         routeView: '', // 父页面改变路由渲染模板
         view: function (context, callback) {
-            callback(this.routeView || 'page.example');
+            callback(this.routeView || 'pc-example');
             return false;
         },
         onbeforerequest: function (context) {
+            yiche.iframeReady['iframe-' + context.iframeId] = true;
         },
         onbeforerender: function (context) {
         },
