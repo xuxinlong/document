@@ -1,0 +1,25 @@
+<!-- target:pc -->
+<!-- var:num = Date.now().toString() + Math.round(Math.random() * 10000) -->
+<div class="container pc-cont">
+	<div class="code">
+		<div class="code-item" ui="type:NS.CodeMirror;mode:htmlmixed;id:code-html-${num}">
+			<div class="code-title"><span>html:</span><span class="code-copy">复制</span></div>
+			<textarea class="code-item html-code">${pcCode.html}</textarea>
+		</div>
+		<div class="code-item" ui="type:NS.CodeMirror;mode:text/x-less;id:code-css-${num}">
+			<div class="code-title"><span>css:</span><span class="code-copy">复制</span></div>
+			<textarea class="code-item html-css">${pcCode.css}</textarea>
+		</div>
+		<div class="code-item" ui="type:NS.CodeMirror;mode:javascript;id:code-js-${num}">
+			<div class="code-title"><span>javascript:</span><span class="code-copy">复制</span></div>
+			<textarea class="code-item html-javascript">${pcCode.js}</textarea>
+		</div>
+		<div class="operate-cont">
+			<div class="run-btn" ui="type:NS.RunBtn;id:${num}">运行</div>
+		</div>
+	</div>
+	<div class="preview">
+		<iframe ui="type:NS.IframeContent;id:iframe-${num}" src="pc.html#/preview/pc-page/pc-example~iframeId=${num}" id="iframeContent"></iframe>
+	</div>
+</div>
+
