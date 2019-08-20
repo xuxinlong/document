@@ -16,26 +16,16 @@ do
         pathname=$str
     fi
 
-    # 创建_define_.js和_define_.css
+    # 检测是否创建 _define_.js 和 _define_.css
     if [ $isCreateDefineJs == "false" ]; then
 
-        if [[ ! -f $pathname/_define_.js ]]; then
-            #statements
-            echo '创建'$pathname'/_define_.js文件'
-            touch $pathname/_define_.js
-        else
-            echo '已经存在'$pathname'/_define_.js文件'
-        fi
-
         if [[ -f $pathname/_define_.js ]]; then
-            defineJs=$pathname'/_define_.js'
+            definepath=$pathname
             isCreateDefineJs=true
-        fi
-
-        if [[ ! -f $pathname/_define_.css ]]; then
-            #statements
-            echo '创建'$pathname'/_define_.css'
-            touch $pathname/_define_.css
+        else
+            if [ ! $definepath ]; then
+                definepath=$pathname
+            fi
         fi
 
     else # 拼接loadRoute路径
@@ -48,13 +38,45 @@ do
 
 done
 
-# 拼接loadRoute名字
-if [ $route ];
-then
-    loadRoute=$route"."$2
+echo '创建 '$definepath'/_define_.js 文件'
+
+if [ $isCreateDefineJs = "false" ]; then
+
+
+    echo '创建 '$definepath'/_define_.js 文件'
+    touch $definepath/_define_.js
+
+    echo '创建 '$definepath'/_define_.css 文件'
+    touch $definepath/_define_.css
+
+    # echo "${array[*]}"
+    # echo "${#array[*]}"
+    echo "${1#*/}"
+
+    if [ ${#array[*]} -gt 1 ]; then
+        echo "大于"
+        loadRoute="${1#*/}"
+        loadRoute=${loadRoute//\//.}.$2
+    else
+        loadRoute=$2
+    fi
+
 else
-    loadRoute=$2
+    echo '已经存在'$definepath'/_define_.js文件'
+    if [ $route ]; then
+        loadRoute=$route.$2
+        # echo "loadRoute " $loadRoute
+    else
+        loadRoute=$2
+    fi
+    # echo "loadRoute " $loadRoute
 fi
+
+defineJs=${definepath}/_define_.js
+
+# echo "defineJs " $defineJs
+# echo "loadRoute " $loadRoute
+
 
 # 添加加载路由代码 ecui.esr.loadRoute('xxx')
 define_str=`cat $defineJs`
@@ -101,9 +123,11 @@ if [[ ! -f $1/route.$2.js ]]; then
     # echo "$layerStr" >> $1/layer.$2.html
 
     # echo "初始化路由文件文件$1/layer.$2.html"
-    echo "初始化路由文件文件$1/route.$2.html"
-    echo "初始化路由文件文件$1/route.$2.js"
-    echo "初始化路由文件文件$1/route.$2.css"
+    echo "初始化路由文件文件 $1/route.$2.html"
+    echo "初始化路由文件文件 $1/route.$2.js"
+    echo "初始化路由文件文件 $1/route.$2.css"
 else
     echo "已经存在路由文件"
 fi
+
+echo "访问路由链接: localhost/xxx/index.html#${definepath}/$loadRoute"
