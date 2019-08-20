@@ -253,6 +253,12 @@
         }
     };
     ecui.esr.onready = function () {
+        // target名字冲突时的处理策略设置，override 表示 target 重名时 覆盖现有 target
+        etpl.config({
+            namingConflict: 'override'
+        });
+        // 对单个路由，配置target名字冲突时的处理策略
+        // context.engine.options.namingConflict = 'override';
         ecui.dom.getParent = ecui.dom.parent;
         Object.assign = Object.assign;
         ecui.ext.esr = ecui.ext.data;

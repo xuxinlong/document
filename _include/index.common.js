@@ -25,13 +25,20 @@
                 window.less.refresh(true, undefined, false);
             },
             createTarget: function (htmlText) {
-                var name = 'mobile_' + Date.now() + Math.round(Math.random() * 10000);
-                // data = data.replace(/<!--\s*target:\s*([^>]+)-->/g, '<!-- target: ' + filename.slice(0, index + 1) + '$1 -->');
-                // ecui.esr.getEngine(moduleName).compile(data.replace(/ui="type:NS\./g, 'ui="type:ecui.ns._' + moduleName.replace(/[._]/g, '-').replace(/\//g, '_') + '.ui.'));
-                htmlText = ecui.util.stringFormat('<!-- target:{0} -->\n', name) + htmlText;
+                // 检查html中是否有target,默认取第一个target作为路由的 view
+                var targets = htmlText.match(/<!--\s*target:\s*([^>]+)-->/g),
+                    name = 'mobile_' + Date.now() + Math.round(Math.random() * 10000);
+                if (targets && targets.length) {
+                    /<!--\s*target:\s*([^>]+)-->/.test(targets[0]);
+                    name = RegExp.$1;
+                } else {
+                    // data = data.replace(/<!--\s*target:\s*([^>]+)-->/g, '<!-- target: ' + filename.slice(0, index + 1) + '$1 -->');
+                    // ecui.esr.getEngine(moduleName).compile(data.replace(/ui="type:NS\./g, 'ui="type:ecui.ns._' + moduleName.replace(/[._]/g, '-').replace(/\//g, '_') + '.ui.'));
+                    htmlText = ecui.util.stringFormat('<!-- target:{0} -->\n', name) + htmlText;   
+                }
                 /(\/.+\/)/.test(ecui.esr.getLocation());
                 var moduleName = RegExp.$1.replace(/\//g, '.');
-                ecui.esr.getEngine().compile(htmlText.replace(/ui="type:NS\./g, 'ui="type:ecui.ns._' + moduleName.replace(/[._]/g, '-').replace(/\//g, '_') + '.ui.'));
+                etpl.compile(htmlText.replace(/ui="type:NS\./g, 'ui="type:ecui.ns._' + moduleName.replace(/[._]/g, '-').replace(/\//g, '_') + '.ui.'));
                 // console.log(moduleName, ecui.esr.getEngine().targets);
                 return name;
             },
