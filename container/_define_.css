@@ -105,14 +105,81 @@
 		height: 334px;
 		margin: 0 8px;
 		box-shadow: 0 4px 8px 0 rgba(86,86,86,0.50);
+		background: #fff;
+
+		.config-cont {
+			position: relative;
+			height: 266px;
+			overflow: auto;
+			padding: 8px;
+
+			.ui-multi-select {
+				display: block;
+				width: auto;
+				height: auto;
+				min-height: 24px;
+			    line-height: 24px;
+			    padding: 4px 4px;
+			    padding-right: 40px;
+			    border: 1px solid #acbaca;
+			    border-radius: 2px;
+			    color: #495362;
+			    background: #ffffff url('images/tree-view/TriangleToBottom.png') no-repeat 340px 15px;
+
+			    .ui-multi-select-text {
+			    	position: relative !important;
+			    	text-align: left !important;
+			    }
+			}
+		}
 
 		.run-btn {
 			position: relative;
-			top: 280px;
+			/*top: 280px;*/
+			margin-top: 4px;
 		}
 	}
 	.preview {
 		width: 1200px;
 		height: 400px;
+	}
+}
+.ui-multi-select-options {
+    background: #FFFFFF;
+    box-shadow: 0 4px 8px 0 rgba(86,86,86,0.50);
+    border-radius: 2px;
+    border-radius: 2px;
+
+    .ui-item {
+		display: block;
+        position: relative;
+        height: 32px;
+        line-height: 32px;
+        cursor: pointer;
+        padding: 0 4px;
+    }
+}
+.edit-items {
+	text-align: left;
+
+	.edit-item {
+		display: block;
+
+		.edit-label {
+			text-align: left;
+			font-weight: bold;
+		}
+
+        .ui-input {
+            display: block;
+            font-size: 14px;
+            width: auto;
+            height: auto;
+			min-height: 24px;
+		    line-height: 24px;
+		    padding: 4px 4px;
+            border-radius: 2px;
+            border: 1px solid #acbaca;
+        }
 	}
 }

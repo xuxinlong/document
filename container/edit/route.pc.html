@@ -15,6 +15,26 @@
 			<textarea class="code-item html-javascript">${pcCode.js}</textarea>
 		</div>
 		<div class="operate-cont">
+			<div class="edit-items config-cont">
+				<div class="edit-item">
+					<div class="edit-label">代码段名称:</div>
+					<div ui="type:text"></div>
+				</div>
+				<div class="edit-item">
+					<div class="edit-label">标签:</div>
+					<div ui="type:multi-select">
+					    <div>选项一</div>
+					    <div>选项二</div>
+					    <div>选项三</div>
+					    <div>选项一</div>
+					    <div>选项二</div>
+					    <div>选项三</div>
+					    <div>选项一</div>
+					    <div>选项二</div>
+					    <div>选项三</div>
+					</div>
+				</div>
+			</div>
 			<div class="run-btn" ui="type:NS.RunBtn;id:${num}">运行</div>
 		</div>
 	</div>
@@ -22,4 +42,6 @@
 		<iframe ui="type:NS.IframeContent;id:iframe-${num}" src="pc.html#/preview/pc-page/pc-example~iframeId=${num}" id="iframeContent"></iframe>
 	</div>
 </div>
+<div style="height: 1px"></div>
+
 

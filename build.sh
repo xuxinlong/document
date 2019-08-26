@@ -1,4 +1,3 @@
-sh ECUI/build.sh doc
 #!/bin/sh
 cd ..
 ./ECUI/build.sh doc
