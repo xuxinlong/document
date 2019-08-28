@@ -176,12 +176,6 @@ function usage() {
     echo "$usage_str"
 }
 
-function create () {
-    # echo '\u53C2\u6570\u4E3A\u7A7A'
-    echo '创建 路由 文件'
-    # echo 'asdfghjasdfg'
-}
-
 # echo $@
 while getopts 'mph' OPT; do
     case $OPT in
