@@ -39,7 +39,7 @@ function create() {
 
     done
 
-    echo '创建 '$definepath'/_define_.js 文件'
+    # echo '创建 '$definepath'/_define_.js 文件'
 
     if [ $isCreateDefineJs = "false" ]; then
 
@@ -95,14 +95,14 @@ function create() {
 
     # 判断route.xxx.js是否存在，不存在则创建文件
     if [[ ! -f $module/route.$routeName.js ]]; then
-        if [ h5 ]; then
+        if [ $h5 ]; then
             touch $module/layer.$routeName.html
         fi
         touch $module/route.$routeName.html
         touch $module/route.$routeName.js
         touch $module/route.$routeName.css
 
-        if [ h5 ]; then
+        if [ $h5 ]; then
             layerStr=${template%%\/\*\*\*layer.html-end\*\*\*\/*}
             layerStr=${layerStr##*/\*\*\*layer.html-begin\*\*\*/}
             layerStr=${layerStr//\{route\}/$routeName} 
@@ -127,7 +127,7 @@ function create() {
         cssStr=${cssStr//\{route\}/$routeName} 
         echo "$cssStr" >> $module/route.$routeName.css
 
-        if [ h5 ]; then
+        if [ $h5 ]; then
             echo "初始化路由文件文件$module/layer.$routeName.html"
         fi
         echo "初始化路由文件文件 $module/route.$routeName.html"
@@ -176,6 +176,11 @@ function usage() {
     echo "$usage_str"
 }
 
+function create () {
+    # echo '\u53C2\u6570\u4E3A\u7A7A'
+    echo '创建 路由 文件'
+    # echo 'asdfghjasdfg'
+}
 
 # echo $@
 while getopts 'mph' OPT; do
