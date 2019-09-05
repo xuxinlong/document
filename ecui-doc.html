@@ -48,14 +48,14 @@
     例如：在route.model.css中要引用 btn_pre.png  
         ecui中错误的引用方式：
         .pre {
-            background-image: url(../images/btn_pre.png);
+            background-image: url(../images1/btn_pre.png);
         }
-            ps：此css正常的使用 link 元素加载的话，是可以正确加载到 localhost/auction/images/btn_pre.png 图片的，但是，在ecui中改css文件是通过ajax请求加载的，
-                把加载的css内容以 style 元素的方式 append 到 index.html 页面的dom中，这个时候浏览器回去加载 style 元素中引用的图片文件，所以url(../images/btn_pre.png)
-                加载的是 localhost/images/btn_pre.png 文件，访问不到 root/images/btn_pre.png 文件，所以请使用下面的正确的用法
+            ps：此css正常的使用 link 元素加载的话，是可以正确加载到 localhost/auction/images1/btn_pre.png 图片的，但是，在ecui中改css文件是通过ajax请求加载的，
+                把加载的css内容以 style 元素的方式 append 到 index.html 页面的dom中，这个时候浏览器回去加载 style 元素中引用的图片文件，所以url(../images1/btn_pre.png)
+                加载的是 localhost/images1/btn_pre.png 文件，访问不到 root/images1/btn_pre.png 文件，所以请使用下面的正确的用法
         ecui中正确的引用方式：
         .pre {
-            background-image: url(images/btn_pre.png);
+            background-image: url(images1/btn_pre.png);
         }
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 

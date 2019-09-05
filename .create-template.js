@@ -43,7 +43,7 @@
 <header>
     <div class="left-wrap">
         <span ui="type:mao.ui.Back" class="back">
-            <img src='images/base/back.png'/>
+            <img src='images1/base/back.png'/>
         </span>
     </div>
     <div class="title-wrap">

@@ -33,7 +33,7 @@ body {
 
 .ui-combox,
 .ui-combox .ui-combox-text input {
-    background: #ffffff url(images/ecui/arrow.png) no-repeat 150px center;
+    background: #ffffff url(images1/ecui/arrow.png) no-repeat 150px center;
 }
 /*.ui-combox .ui-combox-text .ui-placeholder {
     display: none;
@@ -64,10 +64,10 @@ body {
 }
 .ui-radio {
     cursor: pointer;
-    background: url('images/base/radio.png') no-repeat no-repeat center center;
+    background: url('images1/base/radio.png') no-repeat no-repeat center center;
 }
 .ui-radio-checked {
-    background: url('images/base/radio_checked.png') no-repeat no-repeat center center;
+    background: url('images1/base/radio_checked.png') no-repeat no-repeat center center;
 }
 .ui-radio input,
 .ui-checkbox input {
@@ -117,7 +117,7 @@ body {
     z-index: 64016;
     top: 0;
     left: 0;
-    background: url('images/base/loading.gif') center center no-repeat;
+    background: url('images1/base/loading.gif') center center no-repeat;
     background-size: auto auto;
 }
 /*日期*/
@@ -131,12 +131,12 @@ body {
         right: 30px;
         width: 16px;
         height: 16px;
-        background: url('images/base/date_clear.png') no-repeat no-repeat center center;
+        background: url('images1/base/date_clear.png') no-repeat no-repeat center center;
         cursor: pointer;
     }
     input {
         display: block;
-        background: url(images/date.png) no-repeat 140px 5px;
+        background: url(images1/date.png) no-repeat 140px 5px;
         background-size: 16px 16px;
     }
 }
@@ -473,7 +473,7 @@ body {
             display: inline-block;
             height: 24px;
             vertical-align: middle;
-            background-image: url('images/icon.png');
+            background-image: url('images1/icon.png');
             background-position: -26px -33px;
         }
     }
@@ -572,51 +572,51 @@ body {
             margin-top: -4px;
 
             &.wait-scrap {
-                background: url('images/base/wait-scrap.png') no-repeat no-repeat center center;
+                background: url('images1/base/wait-scrap.png') no-repeat no-repeat center center;
                 background-size: 20px 20px;
             }
             &.scrap {
-                background: url('images/base/scrap.png') no-repeat no-repeat center center;
+                background: url('images1/base/scrap.png') no-repeat no-repeat center center;
                 background-size: 20px 20px;
             }
             &.allot {
-                background: url('images/base/allot.png') no-repeat no-repeat center center;
+                background: url('images1/base/allot.png') no-repeat no-repeat center center;
                 background-size: 20px 20px;
             }
             &.take-back {
-                background: url('images/base/take_back.png') no-repeat no-repeat center center;
+                background: url('images1/base/take_back.png') no-repeat no-repeat center center;
                 background-size: 20px 20px;
             }
             &.send-back {
-                background: url('images/base/send_back.png') no-repeat no-repeat center center;
+                background: url('images1/base/send_back.png') no-repeat no-repeat center center;
                 background-size: 20px 20px;
             }
             &.synchronization {
-                background: url('images/base/synchronization.png') no-repeat no-repeat center center;
+                background: url('images1/base/synchronization.png') no-repeat no-repeat center center;
                 background-size: 20px 20px;
             }
             &.export {
-                background: url('images/base/export.png') no-repeat no-repeat center center;
+                background: url('images1/base/export.png') no-repeat no-repeat center center;
                 background-size: 20px 20px;
             }
             &.transfer {
-                background: url('images/base/transfer.png') no-repeat no-repeat center center;
+                background: url('images1/base/transfer.png') no-repeat no-repeat center center;
                 background-size: 20px 20px;
             }
             &.inventory {
-                background: url('images/base/inventory.png') no-repeat no-repeat center center;
+                background: url('images1/base/inventory.png') no-repeat no-repeat center center;
                 background-size: 20px 20px;
             }
             &.create {
-                background: url('images/base/create.png') no-repeat no-repeat center center;
+                background: url('images1/base/create.png') no-repeat no-repeat center center;
                 background-size: 20px 20px;
             }
             &.edit {
-                background: url('images/base/edit.png') no-repeat no-repeat center center;
+                background: url('images1/base/edit.png') no-repeat no-repeat center center;
                 background-size: 20px 20px;
             }
             &.import {
-                background: url('images/base/import.png') no-repeat no-repeat center center;
+                background: url('images1/base/import.png') no-repeat no-repeat center center;
                 background-size: 20px 20px;
             }
         }
@@ -921,7 +921,7 @@ body {
                 display: inline-block;
                 height: 24px;
                 vertical-align: middle;
-                background-image: url('images/icon.png');
+                background-image: url('images1/icon.png');
                 background-position: -26px -33px;
             }
         }
@@ -962,7 +962,7 @@ body {
                 width: 30px;
                 height: 30px;
                 background-color: #000;
-                background-image: url('images/del_pic.png');
+                background-image: url('images1/del_pic.png');
                 background-repeat: no-repeat;
                 background-position: 7px 7px;
             }
@@ -990,11 +990,11 @@ body {
         /*margin-top: -5px;*/
     }
     .operate-btn.add {
-        background: url('images/base/add.png') no-repeat no-repeat center center;
+        background: url('images1/base/add.png') no-repeat no-repeat center center;
         margin-left: 10px;
     }
     .operate-btn.minus {
-        background: url('images/base/minus.png') no-repeat no-repeat center center;
+        background: url('images1/base/minus.png') no-repeat no-repeat center center;
     }
 }
 /* 公用分页区 */
@@ -1156,7 +1156,7 @@ body {
 
 /*暂无结果*/
 .no-result {
-    /*background: #fff url('images/icon_blank.png') no-repeat center center;*/
+    /*background: #fff url('images1/icon_blank.png') no-repeat center center;*/
     padding: 140px 0px;
     text-align: center;
     font-size: 16px;
@@ -1170,7 +1170,7 @@ body {
     line-height: 40px;
     border-radius: 4px;
     border: 1px solid #2E60FF;
-    background: #fff url('images/new-icon.png') no-repeat 10px center; 
+    background: #fff url('images1/new-icon.png') no-repeat 10px center; 
     span {
         margin-left: 39px;
     }             
@@ -1183,7 +1183,7 @@ body {
     line-height: 40px;
     border-radius: 4px;
     border: 1px solid #2E60FF;
-    background: #fff url('images/export-icon.png') no-repeat 10px center; 
+    background: #fff url('images1/export-icon.png') no-repeat 10px center; 
     span {
         margin-left: 39px;
     }             
@@ -1248,7 +1248,7 @@ body {
                 height: 30px;
                 width: 25px;
                 line-height: 30px;
-                background: #ffffff url(images/search-icon.png) no-repeat center center;
+                background: #ffffff url(images1/search-icon.png) no-repeat center center;
                 display: inline-block;
                 vertical-align: top;
                 cursor: pointer;
@@ -1281,27 +1281,27 @@ body {
                     padding-left: 25px;
                     span {
                         padding-left:15px; 
-                        background: #fff url('images/tree/level-2-close.png') no-repeat 0 center;                     
+                        background: #fff url('images1/tree/level-2-close.png') no-repeat 0 center;                     
                     }
                 }
                 .ui-treeview-collapsed {
-                    background: #fff url('images/tree/tree-close.png') no-repeat 10px center;
+                    background: #fff url('images1/tree/tree-close.png') no-repeat 10px center;
                     span {
-                        background: #fff url('images/tree/level-2-close.png') no-repeat 0 center;                     
+                        background: #fff url('images1/tree/level-2-close.png') no-repeat 0 center;                     
                     }
                                    
                 }
                 .ui-treeview-expanded {
-                    background: #fff url('images/tree/tree-open.png') no-repeat 10px center;
+                    background: #fff url('images1/tree/tree-open.png') no-repeat 10px center;
                     span {
-                        background: #fff url('images/tree/level-2-open.png') no-repeat 0 center;                                   
+                        background: #fff url('images1/tree/level-2-open.png') no-repeat 0 center;                                   
                     }
                 }
                 .ui-treeview-children {
                     margin-left: 10px;
                     .staff {
                         padding-left: 20px;
-                        background: #fff url('images/staff/icon_man.png') no-repeat 0 center;                                   
+                        background: #fff url('images1/staff/icon_man.png') no-repeat 0 center;                                   
                     }
                 }
             }
@@ -1330,12 +1330,12 @@ body {
             .distributed-item-name {
                 display: inline-block;
                 padding-left: 25px;
-                background: #fff url('images/staff/icon_select_man.png') no-repeat 0 center; 
+                background: #fff url('images1/staff/icon_select_man.png') no-repeat 0 center; 
             }
             .distributed-item-delete {
                 height: 20px;
                 width: 20px;
-                background: #fff url('images/staff/icon_choosed_delete.png') no-repeat center center;
+                background: #fff url('images1/staff/icon_choosed_delete.png') no-repeat center center;
                 background-size: 100%;
                 position: absolute;
                 right: 10px; 

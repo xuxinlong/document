@@ -249,7 +249,7 @@ button {
                     height: px2rem(48px);
                     line-height: px2rem(48px);
                     margin-right: px2rem(40px);
-                    background: #FFF url(images/community/manager-more@2x.png) no-repeat right center;
+                    background: #FFF url(images1/community/manager-more@2x.png) no-repeat right center;
                     background-size: px2rem(38px) px2rem(30px);
                 }
             }
@@ -644,13 +644,13 @@ button {
 
         .ui-calendar-prev-month {
             left: 27px;
-            background: #FFFFFF url(images/day-left.png) no-repeat center center;
+            background: #FFFFFF url(images1/day-left.png) no-repeat center center;
             background-size: px2rem(32px);
         }
 
         .ui-calendar-next-month {
             right: 27px;
-            background: #FFFFFF url(images/day-right.png) no-repeat center center;
+            background: #FFFFFF url(images1/day-right.png) no-repeat center center;
             background-size: px2rem(32px);
         }
 
@@ -809,47 +809,47 @@ button {
 
 @-webkit-keyframes car-run {
     0% {
-        background: url(images/refresh/image-1.png) no-repeat center center;
+        background: url(images1/refresh/image-1.png) no-repeat center center;
         background-size: 100%;
     }
 
     12.5% {
-        background: url(images/refresh/image-2.png) no-repeat center center;
+        background: url(images1/refresh/image-2.png) no-repeat center center;
         background-size: 100%;
     }
 
     25% {
-        background: url(images/refresh/image-3.png) no-repeat center center;
+        background: url(images1/refresh/image-3.png) no-repeat center center;
         background-size: 100%;
     }
 
     37.5% {
-        background: url(images/refresh/image-4.png) no-repeat center center;
+        background: url(images1/refresh/image-4.png) no-repeat center center;
         background-size: 100%;
     }
 
     50% {
-        background: url(images/refresh/image-5.png) no-repeat center center;
+        background: url(images1/refresh/image-5.png) no-repeat center center;
         background-size: 100%;
     }
 
     62.5% {
-        background: url(images/refresh/image-6.png) no-repeat center center;
+        background: url(images1/refresh/image-6.png) no-repeat center center;
         background-size: 100%;
     }
 
     75% {
-        background: url(images/refresh/image-7.png) no-repeat center center;
+        background: url(images1/refresh/image-7.png) no-repeat center center;
         background-size: 100%;
     }
 
     87.5% {
-        background: url(images/refresh/image-8.png) no-repeat center center;
+        background: url(images1/refresh/image-8.png) no-repeat center center;
         background-size: 100%;
     }
 
     100% {
-        background: url(images/refresh/image-1.png) no-repeat center center;
+        background: url(images1/refresh/image-1.png) no-repeat center center;
         background-size: 100%;
     }
 }

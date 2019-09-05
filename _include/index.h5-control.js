@@ -98,7 +98,7 @@
     );
 
     var autoRequestListView = {
-        HTML_PREPARE: '<img class="refresh-gif" src="images/base/refresh.gif"><span>正在刷新...</span>',
+        HTML_PREPARE: '<img class="refresh-gif" src="images1/base/refresh.gif"><span>正在刷新...</span>',
 
         $headerleave: function () {
             ecui.ui.MListView.prototype.$headerleave.call(this);
@@ -465,7 +465,7 @@
             this._eFile = el.getElementsByTagName('INPUT')[0];
             this._eInput = el.getElementsByTagName('INPUT')[1];
             this._eImg = el.getElementsByTagName('IMG')[0];
-            this._sDefaultImg = options.defaultImg || 'images/order/add_gray.png';
+            this._sDefaultImg = options.defaultImg || 'images1/order/add_gray.png';
         },
         {
             onclick: function () {
