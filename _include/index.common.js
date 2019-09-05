@@ -37,8 +37,8 @@
                     htmlText = ecui.util.stringFormat('<!-- target:{0} -->\n', name) + htmlText;   
                 }
                 /(\/.+\/)/.test(ecui.esr.getLocation());
-                var moduleName = RegExp.$1.replace(/\//g, '.');
-                etpl.compile(htmlText.replace(/ui="type:NS\./g, 'ui="type:ecui.ns._' + moduleName.replace(/[._]/g, '-').replace(/\//g, '_') + '.ui.'));
+                var moduleName = RegExp.$1;
+                etpl.compile(htmlText.replace(/ui="type:NS\./g, 'ui="type:ecui.ns.' + moduleName.replace(/\//g, '_') + '.ui.'));
                 // console.log(moduleName, ecui.esr.getEngine().targets);
                 return name;
             },
