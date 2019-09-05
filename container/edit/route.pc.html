@@ -1,47 +1,48 @@
 <!-- target:pc -->
 <!-- var:num = Date.now().toString() + Math.round(Math.random() * 10000) -->
-<div class="container pc-cont">
+<form class="container pc-cont" name="snippetInfoForm">
+	<!-- if:${detail.id} -->
+	<input class="ui-hide" name="id" value="${id}">
+	<!-- /if -->
 	<div class="code">
 		<div class="code-item" ui="type:NS.CodeMirror;mode:htmlmixed;id:code-html-${num}">
 			<div class="code-title"><span>html:</span><span class="code-copy">复制</span></div>
-			<textarea class="code-item html-code">${pcCode.html}</textarea>
+			<textarea class="code-item html-code" name="codeHtml">${detail.codeHtml}</textarea>
 		</div>
 		<div class="code-item" ui="type:NS.CodeMirror;mode:text/x-less;id:code-css-${num}">
 			<div class="code-title"><span>css:</span><span class="code-copy">复制</span></div>
-			<textarea class="code-item html-css">${pcCode.css}</textarea>
+			<textarea class="code-item html-css" name="codeCss">${detail.codeCss}</textarea>
 		</div>
 		<div class="code-item" ui="type:NS.CodeMirror;mode:javascript;id:code-js-${num}">
 			<div class="code-title"><span>javascript:</span><span class="code-copy">复制</span></div>
-			<textarea class="code-item html-javascript">${pcCode.js}</textarea>
+			<textarea class="code-item html-javascript" name="codeJs">${detail.codeJs}</textarea>
 		</div>
 		<div class="operate-cont">
+			<input name="authorName" class="ui-hide" value="${detail.authorName}" />
+			<input name="authorId" class="ui-hide" value="${detail.authorId}" />
+			<input name="type" class="ui-hide" value="1" />
 			<div class="edit-items config-cont">
 				<div class="edit-item">
 					<div class="edit-label">代码段名称:</div>
-					<div ui="type:text"></div>
+					<div ui="type:text;name:title;value:${detail.title}"></div>
 				</div>
 				<div class="edit-item">
 					<div class="edit-label">标签:</div>
-					<div ui="type:multi-select">
-					    <div>选项一</div>
-					    <div>选项二</div>
-					    <div>选项三</div>
-					    <div>选项一</div>
-					    <div>选项二</div>
-					    <div>选项三</div>
-					    <div>选项一</div>
-					    <div>选项二</div>
-					    <div>选项三</div>
+					<div ui="type:multi-select;name:tag;value:${detail.tag}">
+					    <div ui="value:1;seleted;">列表项</div>
+					    <div ui="value:2;">表格</div>
+					    <div ui="value:3;">个人信息</div>
 					</div>
 				</div>
 			</div>
 			<div class="run-btn" ui="type:NS.RunBtn;id:${num}">运行</div>
+			<div class="run-btn submit-btn" ui="type:NS.SnippetSubmitBtn;id:submit-${num};optId:${detail.id}">提交</div>
 		</div>
 	</div>
 	<div class="preview">
 		<iframe ui="type:NS.IframeContent;id:iframe-${num}" src="pc.html#/preview/pc-page/pc-example~iframeId=${num}" id="iframeContent"></iframe>
 	</div>
-</div>
+</form>
 <div style="height: 1px"></div>
 
 

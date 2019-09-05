@@ -1,14 +1,17 @@
 <!-- target:mobile -->
 <!-- var:num = Date.now().toString() + Math.round(Math.random() * 10000) -->
-<div class="container mobile">
+<form class="container mobile" name="snippetInfoForm">
+	<!-- if:${detail.id} -->
+	<input class="ui-hide" name="id" value="${id}">
+	<!-- /if -->
 	<div class="left">
 		<div class="code-item" ui="type:NS.CodeMirror;mode:htmlmixed;id:code-html-${num}">
 			<div class="code-title"><span>html:</span><span class="code-copy">复制</span></div>
-			<textarea class="code-item html-code" placeholder="输入 html 代码……">${mCode.html}</textarea>
+			<textarea class="code-item html-code" name="codeHtml" placeholder="输入 html 代码……">${detail.codeHtml}</textarea>
 		</div>
 		<div class="code-item" ui="type:NS.CodeMirror;mode:text/x-less;id:code-css-${num}">
 			<div class="code-title"><span>css:</span><span class="code-copy">复制</span></div>
-			<textarea class="code-item html-css" placeholder="输入 css/less 代码……">${mCode.css}</textarea>
+			<textarea class="code-item html-css" name="codeCss" placeholder="输入 css/less 代码……">${detail.codeCss}</textarea>
 		</div>
 	</div>
 	<div class="middle">
@@ -17,11 +20,31 @@
 	<div class="right">
 		<div class="code-item" ui="type:NS.CodeMirror;mode:javascript;id:code-js-${num}">
 			<div class="code-title"><span>javascript:</span><span class="code-copy">复制</span></div>
-			<textarea class="code-item html-javascript" placeholder="输入 JavaScript 代码……">${mCode.js}</textarea>
+			<textarea class="code-item html-javascript" name="codeJs" placeholder="输入 JavaScript 代码……">={${detail.codeJs}}</textarea>
 		</div>
 
 		<div class="run-btn" ui="type:NS.RunBtn;id:${num}">运行</div>
+
+	
+		<div class="edit-items config-cont">
+			<input name="authorName" class="ui-hide" value="${detail.authorName}" />
+			<input name="authorId" class="ui-hide" value="${detail.authorId}" />
+			<input name="type" class="ui-hide" value="2" />
+			<div class="edit-item">
+				<div class="edit-label">代码段名称:</div>
+				<div ui="type:text;name:title;value:${detail.title}"></div>
+			</div>
+			<div class="edit-item">
+				<div class="edit-label">标签:</div>
+				<div ui="type:multi-select;name:tag;value:${detail.tag};">
+				    <div ui="value:1;">列表项</div>
+				    <div ui="value:2;">表格</div>
+				    <div ui="value:3;">个人信息</div>
+				</div>
+			</div>
+			<div class="run-btn submit-btn" ui="type:NS.SnippetSubmitBtn;id:submit-${num};optId:${detail.id}">提交</div>
+		</div>
 	</div>
-</div>
+</form>
 <div style="height: 1px"></div>
 

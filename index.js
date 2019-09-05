@@ -394,6 +394,18 @@
         // 设置 选项控件的文本在 options 中的名称
         ecui.ui.$AbstractSelect.prototype.TEXTNAME = 'code';
 
+        ecui.ui.MultiSelect.prototype.getFormValue = function () {
+            return ecui.ui.InputControl.prototype.getValue.call(this).trim();
+        };
+        ecui.ui.MultiSelect.prototype.onready = function () {
+            var values = this.getValue();
+            this.getPopup().getItems().forEach(function (item) {
+                if (values.indexOf(item.getValue())) {
+                    item.setSelected(true);
+                }
+            });
+            ecui.dispatchEvent(this, 'change');
+        };
         // text输入框 禁用输入历史记录
         var textReady = ecui.ui.Text.prototype.$ready;
         ecui.ui.Text.prototype.$ready = function (event) {

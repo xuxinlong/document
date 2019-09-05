@@ -30,7 +30,7 @@
                     name = 'mobile_' + Date.now() + Math.round(Math.random() * 10000);
                 if (targets && targets.length) {
                     /<!--\s*target:\s*([^>]+)-->/.test(targets[0]);
-                    name = RegExp.$1;
+                    name = RegExp.$1.trim();
                 } else {
                     // data = data.replace(/<!--\s*target:\s*([^>]+)-->/g, '<!-- target: ' + filename.slice(0, index + 1) + '$1 -->');
                     // ecui.esr.getEngine(moduleName).compile(data.replace(/ui="type:NS\./g, 'ui="type:ecui.ns._' + moduleName.replace(/[._]/g, '-').replace(/\//g, '_') + '.ui.'));

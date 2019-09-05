@@ -19,6 +19,7 @@
 	}
 	.code-item {
 		position: relative;
+		width: 100%;
 		
 		.code-title {
 			height: 34px;
@@ -62,6 +63,7 @@
 		}
 	}
 	.run-btn {
+		display: block;
 	    width: 120px;
 	    height: 40px;
 	    line-height: 40px;
@@ -137,6 +139,10 @@
 			position: relative;
 			/*top: 280px;*/
 			margin-top: 4px;
+			display: inline-block;
+			vertical-align: middle;
+			width: 80px;
+			margin: 4px;
 		}
 	}
 	.preview {
