@@ -30,7 +30,7 @@
                             function () {
                                 var data = ecui.esr.getData('data');
                                 if (data instanceof Object) {
-                                    ecui.tip('success', '代码段添加成功');
+                                    ecui.tip('success', this._sOptId ? '代码段更新成功' : '代码段添加成功');
                                 }
                             }
                         );
