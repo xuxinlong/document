@@ -400,7 +400,7 @@
         ecui.ui.MultiSelect.prototype.onready = function () {
             var values = this.getValue();
             this.getPopup().getItems().forEach(function (item) {
-                if (values.indexOf(item.getValue())) {
+                if (values.indexOf(item.getValue()) > -1) {
                     item.setSelected(true);
                 }
             });
